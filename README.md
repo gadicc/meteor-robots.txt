@@ -1,4 +1,4 @@
-== robots.txt smart package ==
+## robots.txt smart package
 
 Currently, all this package does is implement a <code>robots.addLine('line')</code>
 which other packages can use to add lines to what is served at /robots.txt.  If you
