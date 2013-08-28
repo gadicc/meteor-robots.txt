@@ -5,4 +5,6 @@ Package.describe({
 Package.on_use(function (api) {
 	api.use('standard-app-packages', 'server');
 	api.add_files('robots.js', 'server');
+	if (api.export)
+		api.export('robots', 'server');
 });

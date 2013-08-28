@@ -3,7 +3,7 @@
     "description": "Serves a robot.txt which can be modified programatically",
     "homepage": "https://github.com/gadicohen/meteor-robots.txt",
     "author": "Gadi Cohen <dragon@wastelands.net>",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "git": "https://github.com/gadicohen/meteor-robots.txt.git",
 	"packages": {
 	}
