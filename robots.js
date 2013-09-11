@@ -1,28 +1,43 @@
-var root, match, stack;
-var fs = Npm.require('fs');
+var pubRoot, match, stack;
+var fs = Npm.require('fs'),
+  path = Npm.require('path'); 
 
 if (__meteor_bootstrap__.bundle) {
 	// TODO, remove in 2014
-	root = __meteor_bootstrap__.bundle.root;
+	pubRoot = __meteor_bootstrap__.bundle.root + 'public';
 } else {
-	// TODO, see how Meteor does this in 0.6.5+
-	match = /^(.*)\/\.meteor\/.*/.exec(__meteor_bootstrap__.serverDir);
-	root = match[1];
+	pubRoot = path.join(__meteor_bootstrap__.serverDir, '..', 'client', 'app');
+//	WebApp.clientProgram.manifest = _.reject(WebApp.clientProgram.manifest, function(cp) {
+//		return cp.url == '/robots.txt';
+//	});
+//	RoutePolicy.declare('/robots.txt', 'network');
 }
 
-// TODO, remove in 2014
-stack = __meteor_bootstrap__.app ? __meteor_bootstrap__.app.stack
-      : WebApp.connectHandlers.stack;
+// TODO, remove in 2014 
+stack = __meteor_bootstrap__.app
+	? __meteor_bootstrap__.app.stack
+    : WebApp.connectHandlers.stack;
 
 // splice necessary to jump ahead of original /robots.txt route
 stack.splice(0, 0, {
 	route: '/robots.txt',
 	handle: function(req, res, next) {
-		fs.readFile(root + '/static/robots.txt', function(err, data) {
+		fs.readFile(pubRoot + '/robots.txt', function(err, data) {
 			robotsOut(res, err, data);
 		}.future());
 	}
 });
+
+
+/*
+var app = typeof WebApp != 'undefined'
+    ? WebApp.connectHandlers : __meteor_bootstrap__.app;
+app.use(function(req, res, next) {
+	Log(3);
+	console.log(req.url);
+	return next();
+});
+*/
 
 robots = {
 	lines: []

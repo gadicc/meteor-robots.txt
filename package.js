@@ -2,10 +2,18 @@ Package.describe({
     summary: "Serves a robot.txt which can be modified programatically"
 });
 
+Npm.depends({connect: "2.7.10"});
+
 Package.on_use(function (api) {
 	// TODO, support 0.6.4 and below until 2014
 	try {
 	    api.use('webapp', 'server');
+	    /*
+		api.use('routepolicy', 'server');
+	    api.use('logging', 'server');
+	    api.use('meteor', 'server');
+	    api.use('standard-app-packages', 'server');
+	    */
 	}
 	catch (error) {
 	    if (error.code != 'ENOENT')
