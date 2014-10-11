@@ -1,24 +1,11 @@
 Package.describe({
-    summary: "Serves a robot.txt which can be modified programatically"
+  summary: "Serves a robot.txt which can be modified programatically",
+  version: "0.0.9",
+  git: "https://github.com/gadicc/meteor-robots.txt.git"
 });
 
 Package.on_use(function (api) {
-	// TODO, support 0.6.4 and below until 2014
-	try {
-	    api.use('webapp', 'server');
-	    /*
-		api.use('routepolicy', 'server');
-	    api.use('logging', 'server');
-	    api.use('meteor', 'server');
-	    api.use('standard-app-packages', 'server');
-	    */
-	}
-	catch (error) {
-	    if (error.code != 'ENOENT')
-	        throw(error);
-	}	
-
+  api.use('webapp@1.0.0', 'server');
 	api.add_files('robots.js', 'server');
-	if (api.export)
-		api.export('robots', 'server');
+	api.export('robots', 'server');
 });

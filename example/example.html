@@ -1,0 +1,17 @@
+<head>
+  <title>robots-txt example</title>
+</head>
+
+<body>
+  <h1>robots-txt example</h1>
+
+  <pre language="javascript"><code language="javascript">
+		if (Meteor.isServer) {
+		  robots.addLine('Sitemap: ' + Meteor.absoluteUrl('sitemap.xml'));
+		  robots.addLine('User-agent: *');
+		  robots.addLine('Disallow: /talk');
+		}
+	</code></pre>
+
+  <p>See results in <a href="/robots.txt">/robots.txt</a>.</p>
+</body>
