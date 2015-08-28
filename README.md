@@ -1,5 +1,7 @@
 ## robots.txt smart package
 
+Copyright (c) 2013 Gadi Cohen <dragon@wastelands.net>, released under the MIT license (see LICENSE.txt).
+
 Currently, all this package does is implement a <code>robots.addLine('line')</code>
 which other packages can use to add lines to what is served at /robots.txt.
 

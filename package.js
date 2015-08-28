@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Serves a robot.txt which can be modified programatically",
-  version: "0.0.9",
+  version: "0.0.10",
   git: "https://github.com/gadicc/meteor-robots.txt.git"
 });
 
